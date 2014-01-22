@@ -1,0 +1,75 @@
+/* -*- Mode: C; indent-tabs-mode: t; c-basic-offset: 4; tab-width: 4 -*- */
+/*
+ * main.cc
+ * Copyright (C) 2014 xchong <xchong@xchong-Q470C-500P4C>
+ * 
+ * left_reverse is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the
+ * Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ * 
+ * left_reverse is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ * 
+ * You should have received a copy of the GNU General Public License along
+ * with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+
+ /
+
+#include <iostream>
+
+#define LENGTH 6
+using namespace std;
+void print_str(char *s,int length);
+void exchange(char *a,char *b);
+void reverse_string(char *s,int b,int e);
+void left_reverse(char* s,int length,int partition);
+
+int main()
+{
+	char str[LENGTH]={'D','A','S','B','A','N'};
+	print_str (str,LENGTH);
+	left_reverse (str,LENGTH,1);
+	print_str (str,LENGTH);
+	return 0;
+}
+
+void print_str(char *s,int length){
+
+	for(int i=0;i<length;i++){
+
+		cout<<s[i]<<" ";
+	}
+}
+void exchange(char *a,char *b){
+
+	char t;
+	t=*a;
+	*a=*b;
+	*b=t;
+}
+
+void reverse_string(char *s,int b,int e){
+
+	while(e>b){
+
+		cout<<s[b]<<" "<<s[e]<<endl;
+		exchange(&(s[b++]),&(s[e--]));
+		
+	}
+}
+void left_reverse(char* s,int length,int partition){
+
+	reverse_string (s,0,partition);
+	reverse_string (s,partition+1,length-1);
+	reverse_string (s,0,length-1);
+	
+}
+
+
+
+
+
